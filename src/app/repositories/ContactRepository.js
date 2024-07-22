@@ -1,18 +1,20 @@
-const { uuid } = require('uuidv4');
+const { v4 } = require('uuid');
 
 const contacts = [
   {
-    id: uuid(),
+    id: v4(),
     name: 'Arthur',
     email: 'arthur@mail.com',
     phone: '123123123123',
-    category_id: uuid(),
+    category_id: v4(),
   },
 ]
 
 class ContactRepository {
   findAll(){
-    return new Promise((resolve, reject) => {
+    //não se usa Reject aqui pq a responsabilidade de
+    // verificar a conexão é do Controller, o Repository APENAS conecta
+    return new Promise((resolve) => {
       resolve(contacts)
     });
   }
